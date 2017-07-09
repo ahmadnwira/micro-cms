@@ -1,27 +1,31 @@
 <?php render("header"); ?>
 
-<form action="" method="post">
+<form action="add.php" method="post">
       <fieldset>
             <legend>New Subject:</legend>
-
+      
             <input type="hidden" name="table" value="subjects">
 
             <div class="input_group">
                   <label for="">Menue Name</label>
-                  <input type="text" name="menue">
+                  <input type="text" name="menue_name"> 
             </div>
 
             <div class="input_group">
                   <label for="">postion</label>
-                  <select name="pos">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
+                  <select name="position">
+                  <?php for ($i=1; $i <= $count[0]->count; $i++): ?>
+                        <option value="<?= $i ?>"><?= $i ?></option>
+                  <?php endfor; ?>
                   </select>
             </div>
 
             <div class="input_group">
                   <label for="">Visible</label>
-                  <input type="checkbox" name="visible">
+                  <select name="visibility">
+                        <option value="1">show</option>
+                        <option value="0">hide</option>
+                  </select>
             </div>
 
             <input type="submit" value="save">

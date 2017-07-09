@@ -7,9 +7,9 @@ if ( empty($_GET) ){
 
     $query = new Query(Connection::connect($conf));
 
-    $pages = $query->get('pages',['pages_id','menu_name'],'1');
-    
-    render("pages",$pages);
+    $pages = $query->get('pages',['id','menu_name'],'1');
+    $data = ['db'=>$pages];
+    render("pages",$data);
 }
 
 // render<Add_form>
@@ -21,6 +21,6 @@ if ( !empty($_GET['f']) and  $_GET['f']=='add' ){
 if( !empty($_GET["id"]) ){
     $query = new Query(Connection::connect($conf));
 
-    $page = $query->find('pages','pages_id='.$_GET['id']);
+    $page = $query->find('pages','id='.$_GET['id']);
     print_r($page) ;
 }

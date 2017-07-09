@@ -18,6 +18,7 @@
 
 */      
 function render($template_name, $data){
+    extract($data);
     return require ("templates/{$template_name}.template.php") ;
 }
 
@@ -43,6 +44,6 @@ function error_404() {
   @path <string> eg 'index.php'
 */
 function redirect($path){
-      header("Location: ". $path );
+      header("Location: ".$path );
       exit();
 }

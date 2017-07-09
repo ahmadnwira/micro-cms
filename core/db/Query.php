@@ -11,19 +11,18 @@ class Query{
 
         $query->execute();
             
-        return $query->fetchAll(PDO::FETCH_OBJ);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
 
     public function find($table,$condtion){
         
         $sql = sprintf('select * from %s where %s limit 1',$table,$condtion);
-
         $query = $this->pdo->prepare($sql);
 
         $query->execute();
             
-        return $query->fetchAll(PDO::FETCH_OBJ);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function get($table,$cols,$condtion){
@@ -35,7 +34,7 @@ class Query{
 
         $query->execute();
             
-        return $query->fetchAll(PDO::FETCH_OBJ);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function insert($table, $parameters){
@@ -55,6 +54,41 @@ class Query{
              echo 'Connection failed: ' . $e->getMessage();
         }
     }  
+
+    public function update($table, $col, $val, $condtion){
+        $sql = sprintf(
+            'update  %s set %s = "%s" where %s',
+            $table,
+            $col,
+            $val,
+            $condtion
+        );
+        echo $sql;
+        try {
+            $statement = $this->pdo->prepare($sql);
+
+            $statement->execute($parameters);
+        } 
+        catch (PDOException $e) {
+             echo 'Connection failed: ' . $e->getMessage();
+        }
+    }  
+
+    
+    public function delete($table,$condtion){
+        $sql = sprintf('delete from %s where %s',
+            $table,$condtion);
+        echo $sql;
+        try{
+            $statement = $this->pdo->prepare($sql);
+
+            $statement->execute($parameters);
+        } 
+        catch (PDOException $e) {
+             echo 'Connection failed: ' . $e->getMessage();
+        }
+    }
+
 
     public function run_sql($sql){
         $query = $this->pdo->prepare($sql);
