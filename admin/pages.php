@@ -19,8 +19,14 @@ if ( !empty($_GET['f']) and  $_GET['f']=='add' ){
 
 // render<Update_form>
 if( !empty($_GET["id"]) ){
+    
+    $id = clean_str($_GET['id']);
+
+
     $query = new Query(Connection::connect($conf));
 
-    $page = $query->find('pages','id='.$_GET['id']);
-    print_r($page) ;
+    $page = $query->find('pages','id='.$id);
+    
+    $data = ['db'=>$page];
+    render("pages_edit",$data);
 }

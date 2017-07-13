@@ -1,12 +1,15 @@
-<!doctype html>
+<?php
 
-<html lang="en">
-  <head>
-    <title>Mirco-CMS</title>
-    <meta charset="utf-8">
-  </head>
+require('../core/loader.php') ; 
 
-  <body>
-      <h1>Micro-CMS coming soon</h1>
-  </body>
-</html>
+    $query = new Query(Connection::connect($conf));
+
+    $subjects = $query->get('subjects',['id','menue_name','visibility'],'1');
+    $data = ['subjects'=>$subjects];
+    render("home",$data);
+
+    if(!is_blank($_GET['page'])){
+        $content = $query->get('pages',['content'],'visibility=1 and id='.$_GET['page']);
+        $data = ['content'=>$content] ;
+        render('partial',$data) ;  
+    }

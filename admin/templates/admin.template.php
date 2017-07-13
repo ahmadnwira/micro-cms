@@ -1,6 +1,5 @@
 <?php render("header"); ?>
 
-  
   <div id="content">
       <h3> Site administration </h3>
 
@@ -12,10 +11,10 @@
       <tr>
         <?php $tbl = $data[$i]->TABLE_NAME  ?>
 
-        <td><a href="<?=$tbl;?>.php"> <?= $tbl ; ?> </a></td>
+        <td><a href="<?=clean_str($tbl);?>.php"> <?= clean_str($tbl) ; ?> </a></td>
         
           <td class="td">
-            <a href= "<?= $tbl; ?>.php?f=add"
+            <a href= "<?= clean_str($tbl) ; ?>.php?f=add"
               <i class="fa fa-plus" aria-hidden="true"></i>
               Add
             </a>

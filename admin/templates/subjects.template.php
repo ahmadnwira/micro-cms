@@ -24,10 +24,10 @@
     <tr>
               <td>
               <input type="checkbox" name="check_list[]"
-                value="<?=$db[$i]['subjects_id']?>">
+                value="<?=clean_str($db[$i]['id'])?>">
                     <!-- use htmlspecialchars on $id -->
-                    <a href="subjects.php?id=<?=$db[$i]['id']?>"> 
-                        <?= $db[$i]['menue_name'] ?> </a>
+                    <a href="subjects.php?id=<?=clean_str($db[$i]['id'])?>"> 
+                        <?= clean_str($db[$i]['menue_name']) ?> </a>
               </td>
     </tr>
   

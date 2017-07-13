@@ -1,5 +1,11 @@
 <?php render("header"); ?>
-
+<?php if (!empty($errors)):  ?>
+      <div class="error">
+            <?php foreach ($errors as $key => $error ): ?>
+                 <li> <?= $key.' is '.$error; ?> </li>
+            <?php endforeach; ?>
+      </div>
+<?php endif; ?>
 <form action="add.php" method="post">
       <fieldset>
             <legend>New Subject:</legend>
