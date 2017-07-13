@@ -2,6 +2,8 @@
 
     require('../core/loader.php') ; 
 
+    require_login();
+
     $id = clean_str($_POST['id']);
     $table = clean_str($_POST['table']);
         $errors = validate($_POST);
@@ -14,14 +16,15 @@
     else{
         $query = new Query(Connection::connect($conf));
 
-        $query->update('subjects','menue_name',
-            $_POST['menue_name'],"id={$id}");
+        if(!is_blank($_POST['password'])){
+            $_POST['password'] = password_hash($_POST['password'],PASSWORD_BCRYPT);
+        }
         
-        $query->update('subjects', 'position',
-            $_POST['position'],"id={$id}");
+        foreach ($_POST as $col=>$val) {
         
-        $query->update('subjects', 'visibility',
-            $_POST['visibility'],"id={$id}");
+            $query->update($table,$col,$val,"id={$id}");
         
-        redirect('subjects.php');
+        }
+        
+        redirect('index.php');
     }

@@ -70,8 +70,6 @@ class Query{
             $val,
             $condtion
         );
-
-        $sql = $this->pdo->quote($sql);
         
         try {
             $statement = $this->pdo->prepare($sql);
@@ -87,7 +85,8 @@ class Query{
     public function delete($table,$condtion){
         $sql = sprintf('delete from %s where %s',
             $table,$condtion);
-        $sql = $this->pdo->quote($sql);
+    
+
         try{
             $statement = $this->pdo->prepare($sql);
 

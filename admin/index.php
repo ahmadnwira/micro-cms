@@ -2,6 +2,9 @@
 
 require('../core/loader.php') ; 
 
+require_login();
+
+
 $sql = 'select TABLE_NAME
         from INFORMATION_SCHEMA.TABLES
         where TABLE_TYPE =  "BASE TABLE"

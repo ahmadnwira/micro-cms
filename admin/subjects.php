@@ -2,6 +2,9 @@
 
 require('../core/loader.php');
 
+require_login();
+
+
 if ( empty($_GET) ){
     // index
     $query = new Query(Connection::connect($conf));

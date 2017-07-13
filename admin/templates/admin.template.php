@@ -1,8 +1,11 @@
 <?php render("header"); ?>
 
   <div id="content">
-      <h3> Site administration </h3>
-
+    <div>
+        <h3> Site administration </h3>
+        <a href="logout.php" style="float:right;">logout</a>
+    </div>
+    
     <!-- place holder for tables from DB -->
     <table style="width:55%;">
         <th colspan="3">content</th>

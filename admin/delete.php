@@ -4,10 +4,11 @@ if(!empty($_POST['check_list'])) {
 
     require('../core/loader.php') ; 
 
-    print_r($_POST) ;
+    require_login();
 
- $query = new Query(Connection::connect($conf));
-       foreach($_POST['check_list'] as $check) {
+     $query = new Query(Connection::connect($conf));
+    
+    foreach($_POST['check_list'] as $check) {
         $query->delete($_POST['table'],"id={$check}");  
     }
 }

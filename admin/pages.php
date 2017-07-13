@@ -2,6 +2,8 @@
 
 require('../core/loader.php');
 
+require_login();
+
 // render<Index>
 if ( empty($_GET) ){
 
