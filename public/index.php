@@ -8,7 +8,7 @@ require('../core/loader.php') ;
     $data = ['subjects'=>$subjects];
     render("home",$data);
 
-    if(!is_blank($_GET['page'])){
+    if( isset($GET) and !is_blank($_GET['page'])){
         $content = $query->get('pages',['content'],'visibility=1 and id='.$_GET['page']);
         $data = ['content'=>$content] ;
         render('partial',$data) ;  

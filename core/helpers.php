@@ -17,7 +17,7 @@
   return  <template> which is a php file
 
 */      
-function render($template_name, $data){
+function render($template_name, $data=[]){
     extract($data);
     return require ("templates/{$template_name}.template.php") ;
 }

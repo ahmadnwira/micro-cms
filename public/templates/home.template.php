@@ -1,4 +1,6 @@
-<?php render("header"); ?>
+<?php render("header"); 
+require('../core/loader.php') ; 
+?>
 
 <nav>
     <ul>
